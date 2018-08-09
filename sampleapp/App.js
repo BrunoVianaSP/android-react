@@ -10,10 +10,17 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  Button
 } from 'react-native';
 
-import Loading from './components/Loading'; 
+import { StackNavigator } from 'react-navigation';
+
+import Loading from './components/Loading';
+import ProfileScreen from './components/ProfileScreen';
+import HomeScreen from './components/HomeScreen';
+import Dashboard from './components/Dashboard';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,20 +29,69 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+const AppNavigator = StackNavigator({
+  Dashboard: { screen: Dashboard },
+  Home: { screen: HomeScreen },
+  Profile: { screen: ProfileScreen },
+});
+
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="#4F6D7A"
-        />
-        <Loading/>
-      </View>
+      <AppNavigator />
     );
   }
 }
+
+
+
+        
+        
+//const App = createStackNavigator({
+//  Home: { screen: HomeScreen },
+//  Profile: { screen: ProfileScreen },
+//});
+//
+//export default App;
+//type Props = {};
+//
+//export default class App extends Component<Props> {
+//    
+//  Home: { screen: HomeScreen },
+//  Profile: { screen: ProfileScreen },
+//    
+//    
+//    handleClick = () => {
+//        if (this.state.color === 'green'){
+//           this.setState({myColor: 'blue'});
+//        } else {
+//           this.setState({myColor: 'green'});
+//        }
+//    }
+//    
+//    
+//  render() {
+//    return (
+//      <View style={styles.container}>
+//        <StatusBar
+//          barStyle="light-content"
+//          backgroundColor="#4F6D7A"
+//        />
+////        <Loading/>
+//        
+//        <Button
+//          onPress={() => handleClick(this)}
+//          title="Learn More"
+//          color="#841584"
+//          accessibilityLabel="Learn more about this purple button"
+//        />
+//        
+//      </View>
+//    );
+//  }
+//}
+
+
 
 const styles = StyleSheet.create({
   container: {
