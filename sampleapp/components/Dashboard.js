@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
-import { Text, Image, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, Button, Image, View, StyleSheet, ScrollView } from 'react-native';
+//import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Dashboard extends Component {
    state = {
       names: [
-         {'name': 'Ben', 'id': 1},
-         {'name': 'Susan', 'id': 2},
-         {'name': 'Robert', 'id': 3},
-         {'name': 'Mary', 'id': 4},
-         {'name': 'Daniel', 'id': 5},
-         {'name': 'Laura', 'id': 6},
-         {'name': 'John', 'id': 7},
-         {'name': 'Debra', 'id': 8},
-         {'name': 'Aron', 'id': 9},
-         {'name': 'Ann', 'id': 10},
-         {'name': 'Steve', 'id': 11},
-         {'name': 'Olivia', 'id': 12}
+         {'name': 'Home', 'id': 1},
+         {'name': 'Profile', 'id': 2},
+         {'name': 'Settings', 'id': 3},
+         {'name': 'QuizAsk', 'id': 4},
+         {'name': 'QuizResult', 'id': 5},
+         {'name': 'CandidateProfile', 'id': 6},
+         {'name': 'CandidateList', 'id': 7}
       ]
    }
+
    render() {
       return (
          <View>
             <ScrollView>
                {
                   this.state.names.map((item, index) => (
-                     <View key = {item.id} style = {styles.item}>
-                        <Text>{item.name}</Text>
+                    
+                   <View key = {item.id} style = {styles.item}>
+                        <Button
+                            style = {styles.button}
+                            title= {item.name} 
+                            onPress={() => {
+                                console.debug("My Log");
+                                console.debug(item.name);
+                                this.props.navigation.navigate(item.name, { name: item.name })
+                            }}/>
                      </View>
+          
+          
                   ))
+      
+      
                }
             </ScrollView>
          </View>
@@ -46,59 +55,13 @@ const styles = StyleSheet.create ({
       borderColor: '#2a4944',
       borderWidth: 1,
       backgroundColor: '#d2f7f1'
+   },
+    button: {
+    backgroundColor: "rgba(92, 99,216, 1)",
+    width: 300,
+    height: 45,
+    borderColor: "transparent",
+    borderWidth: 0,
+    borderRadius: 5
    }
 })
-
-
-//import React, { Component } from 'react';
-//import {
-//  StyleSheet,
-//  Text,
-//  View,
-//  Button
-//} from 'react-native';
-//
-//export default class HomeScreen extends React.Component {
-//  static navigationOptions = {
-//    title: 'Dashboard',
-//  };
-//  render() {
-//    const { navigate } = this.props.navigation;
-//    return (
-//      <ScrollView>
-//               {
-//                  this.state.buttons.map((item, index) ⇒ (
-//                     <View>
-//                        <Button
-//                        title="Go to Home"
-//                        onPress={() =>
-//                          navigate('Profile', { name: 'Jane' })
-//                        }
-//                      />
-//                     </View>
-//                  ))
-//               }
-//            </ScrollView>
-//        
-//        
-//    );
-//  }
-//}
-//
-//
-//state = {
-//      names: [
-//         {'name': 'Ben', 'id': 1},
-//         {'name': 'Susan', 'id': 2},
-//         {'name': 'Robert', 'id': 3},
-//         {'name': 'Mary', 'id': 4},
-//         {'name': 'Daniel', 'id': 5},
-//         {'name': 'Laura', 'id': 6},
-//         {'name': 'John', 'id': 7},
-//         {'name': 'Debra', 'id': 8},
-//         {'name': 'Aron', 'id': 9},
-//         {'name': 'Ann', 'id': 10},
-//         {'name': 'Steve', 'id': 11},
-//         {'name': 'Olivia', 'id': 12}
-//      ]
-//   }
