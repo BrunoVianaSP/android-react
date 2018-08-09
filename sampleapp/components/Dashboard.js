@@ -21,7 +21,6 @@ class Dashboard extends Component {
             <ScrollView>
                {
                   this.state.names.map((item, index) => (
-                    
                    <View key = {item.id} style = {styles.item}>
                         <Button
                             style = {styles.button}
@@ -32,11 +31,7 @@ class Dashboard extends Component {
                                 this.props.navigation.navigate(item.name, { name: item.name })
                             }}/>
                      </View>
-          
-          
                   ))
-      
-      
                }
             </ScrollView>
          </View>
